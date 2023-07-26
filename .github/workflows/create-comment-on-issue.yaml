@@ -8,6 +8,6 @@ jobs:
   comment-with-action:
     runs-on: ubuntu-latest
     steps:
-      - name: "run the workflow to check dump github context"
+      - name: "check dump github context"
         run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
