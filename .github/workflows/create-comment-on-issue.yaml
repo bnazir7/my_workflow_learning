@@ -11,3 +11,19 @@ jobs:
       - name: "check the dump github context"
         run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
+
+  comment-with-api:
+    runs-on: ubuntu-lastest
+    steps:
+      - name: "creating comment with giuthub api"
+        run: |
+          gh api -X POST \
+            http://api.githuy.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/{ISSUE_NUMBER}
+            -f body='
+            Comment from github api not from actions
+            '
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORGANIZATION: ${{ github.event.organisation.login}}
+          REPOSITORY: ${{ guthub.event.repository.name }}
+          ISSUE_NUMBER: ${{github.event.issue.number}}
