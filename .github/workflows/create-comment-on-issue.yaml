@@ -18,7 +18,7 @@ jobs:
       - name: "creating comment with giuthub api"
         run: |
           gh api -X POST \
-            http://api.githuy.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/{ISSUE_NUMBER}
+            http://api.github.com/repo/${ORGANIZATION}/${REPOSITORY}/issues/{ISSUE_NUMBER}
             -f body='
             Comment from github api not from actions
             '
